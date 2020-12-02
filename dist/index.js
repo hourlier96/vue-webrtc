@@ -117,7 +117,7 @@ var Component = __webpack_require__(9)(
   /* template */
   __webpack_require__(10),
   /* scopeId */
-  "data-v-49ef9b35",
+  "data-v-31657b7a",
   /* cssModules */
   null
 )
@@ -302,6 +302,16 @@ exports.default = {
       });
       this.videoList = [];
     },
+    stopVideo: function stopVideo() {
+      this.rtcmConnection.onstream = function (event) {
+        event.stream.getVideoTracks()[0].enabled = !event.stream.getVideoTracks()[0].enabled;
+      };
+    },
+    muteVideo: function muteVideo() {
+      this.rtcmConnection.onstream = function (event) {
+        event.stream.getAudioTracks()[0].enabled = !event.stream.getAudioTracks()[0].enabled;
+      };
+    },
     capture: function capture() {
       return this.getCanvas().toDataURL(this.screenshotFormat);
     },
@@ -407,7 +417,7 @@ exports = module.exports = __webpack_require__(6)();
 
 
 // module
-exports.push([module.i, ".video-list[data-v-49ef9b35]{background:#f5f5f5;height:auto}.video-list div[data-v-49ef9b35]{padding:0}.video-item[data-v-49ef9b35]{background:#c5c4c4;display:inline-block}", ""]);
+exports.push([module.i, ".video-list[data-v-31657b7a]{background:#f5f5f5;height:auto}.video-list div[data-v-31657b7a]{padding:0}.video-item[data-v-31657b7a]{background:#c5c4c4;display:inline-block}", ""]);
 
 // exports
 
@@ -6653,7 +6663,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       ref: "videos",
       refInFor: true,
       attrs: {
-        "controls": "",
         "autoplay": "",
         "playsinline": "",
         "height": _vm.cameraHeight,
@@ -6677,7 +6686,7 @@ var content = __webpack_require__(5);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("62bb3ac2", content, true);
+var update = __webpack_require__(12)("5a3c38ba", content, true);
 
 /***/ }),
 /* 12 */

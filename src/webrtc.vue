@@ -4,7 +4,7 @@
           v-bind:video="item"
           v-bind:key="item.id"
           class="video-item">
-        <video controls autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
+        <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
 </template>
@@ -157,6 +157,16 @@
           localStream.stop();
         });
         this.videoList = [];
+      },
+      stopVideo() {
+        this.rtcmConnection.onstream = function (event) {
+          event.stream.getVideoTracks()[0].enabled = !event.stream.getVideoTracks()[0].enabled
+        };
+      },
+      muteVideo() {
+        this.rtcmConnection.onstream = function (event) {
+          event.stream.getAudioTracks()[0].enabled = !event.stream.getAudioTracks()[0].enabled
+        };
       },
       capture() {
         return this.getCanvas().toDataURL(this.screenshotFormat);
