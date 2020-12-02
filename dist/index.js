@@ -303,14 +303,10 @@ exports.default = {
       this.videoList = [];
     },
     stopVideo: function stopVideo() {
-      this.rtcmConnection.onstream = function (event) {
-        event.stream.getVideoTracks()[0].enabled = !event.stream.getVideoTracks()[0].enabled;
-      };
+      this.rtcmConnection.session.video = !this.rtcmConnection.session.video;
     },
     muteVideo: function muteVideo() {
-      this.rtcmConnection.onstream = function (event) {
-        event.stream.getAudioTracks()[0].enabled = !event.stream.getAudioTracks()[0].enabled;
-      };
+      this.rtcmConnection.session.audio = !this.rtcmConnection.session.audio;
     },
     capture: function capture() {
       return this.getCanvas().toDataURL(this.screenshotFormat);
