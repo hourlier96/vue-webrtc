@@ -159,14 +159,16 @@
         this.videoList = [];
       },
       stopVideo() {
-        this.rtcmConnection.onstream = function (event) {
-          event.stream.getVideoTracks()[0].enabled = !event.stream.getVideoTracks()[0].enabled
-        };
+        this.rtcmConnection.session.video = !this.rtcmConnection.session.video;
+        // this.rtcmConnection.onstream = function (event) {
+        //   event.stream.getVideoTracks()[0].enabled = !event.stream.getVideoTracks()[0].enabled
+        // };
       },
       muteVideo() {
-        this.rtcmConnection.onstream = function (event) {
-          event.stream.getAudioTracks()[0].enabled = !event.stream.getAudioTracks()[0].enabled
-        };
+        this.rtcmConnection.session.audio = !this.rtcmConnection.session.audio;
+        // this.rtcmConnection.onstream = function (event) {
+        //   event.stream.getAudioTracks()[0].enabled = !event.stream.getAudioTracks()[0].enabled
+        // };
       },
       capture() {
         return this.getCanvas().toDataURL(this.screenshotFormat);
