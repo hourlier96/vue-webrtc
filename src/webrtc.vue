@@ -5,7 +5,7 @@
           v-bind:key="item.id"
           class="video-item">
         <div> Video ID: {{ item.id }} </div>
-        <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
+        <video controls autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
 </template>
@@ -160,13 +160,25 @@
         this.videoList = [];
       },
       stopVideo() {
-        this.rtcmConnection.session.video = !this.rtcmConnection.session.video;
+        navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+          stream.getTracks().forEach(function(track) {
+          if (track.readyState == 'live' && track.kind === 'video') {
+            track.stop();
+            console.log("Track stoped")
+          } 
+        }).catch(function(err) {
+          console.log(err)
+        });
+      });
+        //this.rtcmConnection.session.video = !this.rtcmConnection.session.video;
         // this.rtcmConnection.onstream = function (event) {
         //   event.stream.getVideoTracks()[0].enabled = !event.stream.getVideoTracks()[0].enabled
         // };
       },
       muteVideo() {
-        this.rtcmConnection.session.audio = !this.rtcmConnection.session.audio;
+        this.localVideo.muted = !this.localVideo.muted;
+        console.log("Muted");
+        //this.rtcmConnection.session.audio = !this.rtcmConnection.session.audio;
         // this.rtcmConnection.onstream = function (event) {
         //   event.stream.getAudioTracks()[0].enabled = !event.stream.getAudioTracks()[0].enabled
         // };

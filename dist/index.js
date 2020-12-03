@@ -303,10 +303,20 @@ exports.default = {
       this.videoList = [];
     },
     stopVideo: function stopVideo() {
-      this.rtcmConnection.session.video = !this.rtcmConnection.session.video;
+      navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
+        stream.getTracks().forEach(function (track) {
+          if (track.readyState == 'live' && track.kind === 'video') {
+            track.stop();
+            console.log("Track stoped");
+          }
+        }).catch(function (err) {
+          console.log(err);
+        });
+      });
     },
     muteVideo: function muteVideo() {
-      this.rtcmConnection.session.audio = !this.rtcmConnection.session.audio;
+      this.localVideo.muted = !this.localVideo.muted;
+      console.log("Muted");
     },
     capture: function capture() {
       return this.getCanvas().toDataURL(this.screenshotFormat);
@@ -6659,6 +6669,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       ref: "videos",
       refInFor: true,
       attrs: {
+        "controls": "",
         "autoplay": "",
         "playsinline": "",
         "height": _vm.cameraHeight,
