@@ -6655,7 +6655,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "video": item
       }
-    }, [_c('div', [_vm._v(" " + _vm._s(item.id) + " ")]), _vm._v(" "), _c('video', {
+    }, [_c('div', [_vm._v(" ID: " + _vm._s(item.id) + " ")]), _vm._v(" "), _c('video', {
       ref: "videos",
       refInFor: true,
       attrs: {
