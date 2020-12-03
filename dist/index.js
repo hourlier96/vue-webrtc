@@ -303,15 +303,17 @@ exports.default = {
       this.videoList = [];
     },
     changeVideoState: function changeVideoState() {
-      navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(function (stream) {
+      navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(function (stream) {
         stream.getTracks().forEach(function (track) {
           if (track.kind === 'video') {
             if (track.readyState == 'live') {
-              track.enabled = false;
+              track.stop();
               console.log("Track stoped");
             } else {
-              track.enabled = true;
-              console.log("Track started");
+              navigator.mediaDevices.getUserMedia({ video: true }).then(function (new_stream) {
+                new_stream.removeTrack(stream.getVideoTracks()[0]);
+                new_stream.addTrack(new_stream.getVideoTracks()[0]);
+              });
             }
           }
         });
