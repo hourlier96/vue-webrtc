@@ -171,9 +171,9 @@
                 console.log("Track started")
               }
             }
-          }).catch(function(err) {
+          })
+        }).catch(function(err) {
             console.log(err)
-          });
         });
       },
       changeMicroState() {

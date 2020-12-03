@@ -314,9 +314,9 @@ exports.default = {
               console.log("Track started");
             }
           }
-        }).catch(function (err) {
-          console.log(err);
         });
+      }).catch(function (err) {
+        console.log(err);
       });
     },
     changeMicroState: function changeMicroState() {
