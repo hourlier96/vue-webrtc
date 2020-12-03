@@ -4,6 +4,7 @@
           v-bind:video="item"
           v-bind:key="item.id"
           class="video-item">
+        <div> {{ item.id }} </div>
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
