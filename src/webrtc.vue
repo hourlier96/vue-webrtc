@@ -159,29 +159,25 @@
         });
         this.videoList = [];
       },
-      stopVideo() {
-        navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+      changeVideoState() {
+        navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(function(stream) {
           stream.getTracks().forEach(function(track) {
-          if (track.readyState == 'live' && track.kind === 'video') {
-            track.stop();
-            console.log("Track stoped")
-          } 
-        }).catch(function(err) {
-          console.log(err)
+            if (track.kind === 'video') {
+              if (track.readyState == 'live') {
+                track.enabled = false;
+                console.log("Track stoped")
+              } else {
+                track.enabled = true;
+                console.log("Track started")
+              }
+            }
+          }).catch(function(err) {
+            console.log(err)
+          });
         });
-      });
-        //this.rtcmConnection.session.video = !this.rtcmConnection.session.video;
-        // this.rtcmConnection.onstream = function (event) {
-        //   event.stream.getVideoTracks()[0].enabled = !event.stream.getVideoTracks()[0].enabled
-        // };
       },
-      muteVideo() {
+      changeMicroState() {
         this.localVideo.muted = !this.localVideo.muted;
-        console.log("Muted");
-        //this.rtcmConnection.session.audio = !this.rtcmConnection.session.audio;
-        // this.rtcmConnection.onstream = function (event) {
-        //   event.stream.getAudioTracks()[0].enabled = !event.stream.getAudioTracks()[0].enabled
-        // };
       },
       capture() {
         return this.getCanvas().toDataURL(this.screenshotFormat);

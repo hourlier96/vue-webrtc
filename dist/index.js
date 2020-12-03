@@ -302,21 +302,25 @@ exports.default = {
       });
       this.videoList = [];
     },
-    stopVideo: function stopVideo() {
-      navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
+    changeVideoState: function changeVideoState() {
+      navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(function (stream) {
         stream.getTracks().forEach(function (track) {
-          if (track.readyState == 'live' && track.kind === 'video') {
-            track.stop();
-            console.log("Track stoped");
+          if (track.kind === 'video') {
+            if (track.readyState == 'live') {
+              track.enabled = false;
+              console.log("Track stoped");
+            } else {
+              track.enabled = true;
+              console.log("Track started");
+            }
           }
         }).catch(function (err) {
           console.log(err);
         });
       });
     },
-    muteVideo: function muteVideo() {
+    changeMicroState: function changeMicroState() {
       this.localVideo.muted = !this.localVideo.muted;
-      console.log("Muted");
     },
     capture: function capture() {
       return this.getCanvas().toDataURL(this.screenshotFormat);
