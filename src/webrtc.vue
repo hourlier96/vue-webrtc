@@ -161,19 +161,19 @@
       },
       changeVideoState() {
         navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream) {
-          stream.getTracks().forEach(function(track) {
-            if (track.kind === 'video') {
-              if (track.readyState == 'live') {
-                track.stop();
-                console.log("Track stoped")
-              } else {
-                navigator.mediaDevices.getUserMedia({video: true}).then(function(new_stream) {
-                  new_stream.removeTrack(stream.getVideoTracks()[0])
-                  new_stream.addTrack(new_stream.getVideoTracks()[0])
-                });
-              }
-            }
-          })
+          console.log(stream.getTracks())
+          let currentTrack = stream.getTracks().find(track => track.kind == 'video');
+          if (track.readyState == 'live') {
+            track.stop();
+            console.log(track)
+            console.log("Track stoped")
+          } else {
+            navigator.mediaDevices.getUserMedia({video: true}).then(function(new_stream) {
+              new_stream.removeTrack(stream.getVideoTracks()[0])
+              new_stream.addTrack(new_stream.getVideoTracks()[0])
+            });
+            console.log("Track started")
+          }
         }).catch(function(err) {
             console.log(err)
         });
