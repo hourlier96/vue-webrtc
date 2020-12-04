@@ -290,6 +290,7 @@ exports.default = {
     this.rtcmConnection.onmute = function (e) {
       if (e.session.audio && !e.session.video) {
         e.mediaElement.muted = true;
+        return;
       }
       e.mediaElement.src = null;
       e.mediaElement.pause();
@@ -297,8 +298,10 @@ exports.default = {
     };
 
     this.rtcmConnection.onunmute = function (e) {
+      console.log(e);
       if (e.session.audio && !e.session.video) {
         e.mediaElement.muted = false;
+        return;
       }
 
       e.mediaElement.removeAttribute('poster');

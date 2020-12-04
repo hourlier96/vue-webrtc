@@ -149,6 +149,7 @@
       this.rtcmConnection.onmute = function(e) {
         if(e.session.audio && !e.session.video) {
             e.mediaElement.muted = true;
+            return;
         }
         e.mediaElement.src = null;
         e.mediaElement.pause();
@@ -157,8 +158,10 @@
 
       // if local or remote stream is unmuted
       this.rtcmConnection.onunmute = function(e) {
+        console.log(e)
         if(e.session.audio && !e.session.video) {
               e.mediaElement.muted = false;
+              return;
         }
 
         e.mediaElement.removeAttribute('poster');
