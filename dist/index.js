@@ -308,17 +308,8 @@ exports.default = {
         var currentTrack = stream.getTracks().find(function (track) {
           return track.kind == 'video';
         });
-        if (track.readyState == 'live') {
-          track.stop();
-          console.log(track);
-          console.log("Track stoped");
-        } else {
-          navigator.mediaDevices.getUserMedia({ video: true }).then(function (new_stream) {
-            new_stream.removeTrack(stream.getVideoTracks()[0]);
-            new_stream.addTrack(new_stream.getVideoTracks()[0]);
-          });
-          console.log("Track started");
-        }
+        console.log(currentTrack);
+        currentTrack.enabled = !currentTrack.enabled;
       }).catch(function (err) {
         console.log(err);
       });

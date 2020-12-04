@@ -163,17 +163,20 @@
         navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream) {
           console.log(stream.getTracks())
           let currentTrack = stream.getTracks().find(track => track.kind == 'video');
-          if (track.readyState == 'live') {
-            track.stop();
-            console.log(track)
-            console.log("Track stoped")
-          } else {
-            navigator.mediaDevices.getUserMedia({video: true}).then(function(new_stream) {
-              new_stream.removeTrack(stream.getVideoTracks()[0])
-              new_stream.addTrack(new_stream.getVideoTracks()[0])
-            });
-            console.log("Track started")
-          }
+          console.log(currentTrack)
+          currentTrack.enabled = !currentTrack.enabled
+
+          // if (track.readyState == 'live') {
+            
+          //   console.log(track)
+          //   console.log("Track stoped")
+          // } else {
+          //   navigator.mediaDevices.getUserMedia({video: true}).then(function(new_stream) {
+          //     new_stream.removeTrack(stream.getVideoTracks()[0])
+          //     new_stream.addTrack(new_stream.getVideoTracks()[0])
+          //   });
+          //   console.log("Track started")
+          // }
         }).catch(function(err) {
             console.log(err)
         });
