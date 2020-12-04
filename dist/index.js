@@ -286,6 +286,25 @@ exports.default = {
       that.videoList = newList;
       that.$emit('left-room', stream.streamid);
     };
+
+    this.rtcmConnection.onmute = function (e) {
+      if (e.session.audio && !e.session.video) {
+        e.mediaElement.muted = true;
+      }
+      e.mediaElement.src = null;
+      e.mediaElement.pause();
+      e.mediaElement.setAttribute('poster', 'assets/screenshots.jpg');
+    };
+
+    this.rtcmConnection.onunmute = function (e) {
+      if (e.session.audio && !e.session.video) {
+        e.mediaElement.muted = false;
+      }
+
+      e.mediaElement.removeAttribute('poster');
+      e.mediaElement.src = URL.createObjectURL(e.stream);
+      e.mediaElement.play();
+    };
   },
 
   methods: {
