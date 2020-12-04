@@ -161,13 +161,14 @@
         this.videoList = [];
       },
       changeVideoState() {
+        var that = this;
         this.rtcmConnection.attachStreams.forEach(function (localStream) {
-          if (this.localVideo.up) {
+          if (that.localVideo.up) {
             localStream.mute('video');
           } else {
             localStream.unmute('video');
           }
-          this.localVideo.up = !this.localVideo.up;
+          that.localVideo.up = !that.localVideo.up;
         });
 
         // navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream) {
