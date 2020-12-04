@@ -261,6 +261,7 @@ exports.default = {
 
         if (stream.type === 'local') {
           that.localVideo = video;
+          that.localVideo.up = true;
         }
       }
 
@@ -303,15 +304,13 @@ exports.default = {
       this.videoList = [];
     },
     changeVideoState: function changeVideoState() {
-      navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(function (stream) {
-        console.log(stream.getTracks());
-        var currentTrack = stream.getTracks().find(function (track) {
-          return track.kind == 'video';
-        });
-        console.log(currentTrack);
-        currentTrack.enabled = !currentTrack.enabled;
-      }).catch(function (err) {
-        console.log(err);
+      this.rtcmConnection.attachStreams.forEach(function (localStream) {
+        if (this.localVideo.up) {
+          localStream.mute('video');
+        } else {
+          localStream.unmute('video');
+        }
+        this.localVideo.up = !this.localVideo.up;
       });
     },
     changeMicroState: function changeMicroState() {

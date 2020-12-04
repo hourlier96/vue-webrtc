@@ -118,6 +118,7 @@
 
           if (stream.type === 'local') {
             that.localVideo = video;
+            that.localVideo.up = true;
           }
         }
 
@@ -160,11 +161,20 @@
         this.videoList = [];
       },
       changeVideoState() {
-        navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream) {
-          console.log(stream.getTracks())
-          let currentTrack = stream.getTracks().find(track => track.kind == 'video');
-          console.log(currentTrack)
-          currentTrack.enabled = !currentTrack.enabled
+        this.rtcmConnection.attachStreams.forEach(function (localStream) {
+          if (this.localVideo.up) {
+            localStream.mute('video');
+          } else {
+            localStream.unmute('video');
+          }
+          this.localVideo.up = !this.localVideo.up;
+        });
+
+        // navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream) {
+        //   console.log(stream.getTracks())
+        //   let currentTrack = stream.getTracks().find(track => track.kind == 'video');
+        //   console.log(currentTrack)
+        //   currentTrack.enabled = !currentTrack.enabled
 
           // if (track.readyState == 'live') {
             
@@ -177,9 +187,9 @@
           //   });
           //   console.log("Track started")
           // }
-        }).catch(function(err) {
-            console.log(err)
-        });
+        // }).catch(function(err) {
+        //     console.log(err)
+        // });
       },
       changeMicroState() {
         this.localVideo.muted = !this.localVideo.muted;
