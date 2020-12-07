@@ -148,13 +148,14 @@
       // if local or remote stream is muted
       this.rtcmConnection.onmute = function(e) {
         e.mediaElement.src = null;
-        e.mediaElement.setAttribute('poster', 'assets/screenshots.jpg');
+        document.getElementById(e.mediaElement.id).setAttribute('poster', 'assets/screenshots.jpg');
       };
 
       // if local or remote stream is unmuted
       this.rtcmConnection.onunmute = function(e) {
         console.log(e)
-        e.mediaElement.removeAttribute('poster');
+        this.localVideo.muted = false;
+        document.getElementById(e.mediaElement.id).removeAttribute('poster');
         e.mediaElement.src = URL.createObjectURL(e.stream);
       };
     },
