@@ -147,26 +147,15 @@
 
       // if local or remote stream is muted
       this.rtcmConnection.onmute = function(e) {
-        if(e.session.audio && !e.session.video) {
-            e.mediaElement.muted = true;
-            return;
-        }
         e.mediaElement.src = null;
-        e.mediaElement.pause();
         e.mediaElement.setAttribute('poster', 'assets/screenshots.jpg');
       };
 
       // if local or remote stream is unmuted
       this.rtcmConnection.onunmute = function(e) {
         console.log(e)
-        if(e.session.audio && !e.session.video) {
-              e.mediaElement.muted = false;
-              return;
-        }
-
         e.mediaElement.removeAttribute('poster');
         e.mediaElement.src = URL.createObjectURL(e.stream);
-        e.mediaElement.play();
       };
     },
     methods: {
@@ -194,27 +183,6 @@
           }
           that.localVideo.up = !that.localVideo.up;
         });
-
-        // navigator.mediaDevices.getUserMedia({video: true, audio: false}).then(function(stream) {
-        //   console.log(stream.getTracks())
-        //   let currentTrack = stream.getTracks().find(track => track.kind == 'video');
-        //   console.log(currentTrack)
-        //   currentTrack.enabled = !currentTrack.enabled
-
-          // if (track.readyState == 'live') {
-            
-          //   console.log(track)
-          //   console.log("Track stoped")
-          // } else {
-          //   navigator.mediaDevices.getUserMedia({video: true}).then(function(new_stream) {
-          //     new_stream.removeTrack(stream.getVideoTracks()[0])
-          //     new_stream.addTrack(new_stream.getVideoTracks()[0])
-          //   });
-          //   console.log("Track started")
-          // }
-        // }).catch(function(err) {
-        //     console.log(err)
-        // });
       },
       changeMicroState() {
         this.localVideo.muted = !this.localVideo.muted;

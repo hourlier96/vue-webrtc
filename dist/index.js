@@ -288,25 +288,14 @@ exports.default = {
     };
 
     this.rtcmConnection.onmute = function (e) {
-      if (e.session.audio && !e.session.video) {
-        e.mediaElement.muted = true;
-        return;
-      }
       e.mediaElement.src = null;
-      e.mediaElement.pause();
       e.mediaElement.setAttribute('poster', 'assets/screenshots.jpg');
     };
 
     this.rtcmConnection.onunmute = function (e) {
       console.log(e);
-      if (e.session.audio && !e.session.video) {
-        e.mediaElement.muted = false;
-        return;
-      }
-
       e.mediaElement.removeAttribute('poster');
       e.mediaElement.src = URL.createObjectURL(e.stream);
-      e.mediaElement.play();
     };
   },
 
