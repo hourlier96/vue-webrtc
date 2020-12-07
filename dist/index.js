@@ -289,12 +289,12 @@ exports.default = {
 
     this.rtcmConnection.onmute = function (e) {
       e.mediaElement.src = null;
-      document.getElementById(e.mediaElement.id).setAttribute('poster', 'assets/screenshots.jpg');
+      document.getElementById(e.mediaElement.id).setAttribute('poster', 'src/assets/unknown_person.png');
     };
 
     this.rtcmConnection.onunmute = function (e) {
       console.log(e);
-      this.localVideo.muted = false;
+      that.localVideo.muted = false;
       document.getElementById(e.mediaElement.id).removeAttribute('poster');
       e.mediaElement.src = URL.createObjectURL(e.stream);
     };
