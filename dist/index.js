@@ -294,9 +294,12 @@ exports.default = {
 
     this.rtcmConnection.onunmute = function (e) {
       console.log(e);
-      that.localVideo.muted = false;
+
       document.getElementById(e.mediaElement.id).removeAttribute('poster');
       e.mediaElement.src = URL.createObjectURL(e.stream);
+      e.stream.getAudioTracks()[0].enabled = true;
+      that.localVideo.muted = false;
+      console.log(that.localVideo);
     };
   },
 
