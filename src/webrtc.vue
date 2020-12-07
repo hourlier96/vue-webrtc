@@ -148,7 +148,11 @@
       // if local or remote stream is muted
       this.rtcmConnection.onmute = function(e) {
         e.mediaElement.src = null;
-        document.getElementById(e.mediaElement.id).setAttribute('poster', 'src/assets/unknown_person.png');
+        document.getElementById(e.mediaElement.id).setAttribute('poster', '../../../src/assets/img/unknown_person.png');
+        if(e.session.audio && !e.session.video) {
+          e.mediaElement.muted = true;
+          return;
+        }
       };
 
       // if local or remote stream is unmuted
@@ -157,9 +161,14 @@
         
         document.getElementById(e.mediaElement.id).removeAttribute('poster');
         e.mediaElement.src = URL.createObjectURL(e.stream);
+
+        if(e.session.audio && !e.session.video) {
+          e.mediaElement.muted = false;
+          return;
+        }
+
         e.stream.getAudioTracks()[0].enabled = true;
-        that.localVideo.muted = false;
-        console.log(that.localVideo);
+        console.log(e.stream.getAudioTracks());
       };
     },
     methods: {
