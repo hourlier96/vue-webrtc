@@ -286,6 +286,14 @@ exports.default = {
       that.videoList = newList;
       that.$emit('left-room', stream.streamid);
     };
+
+    this.rtcmConnection.onmute = function (e) {
+      that.$emit('mute-video', e);
+    };
+
+    this.rtcmConnection.onunmute = function (e) {
+      that.$emit('unmute-video', e);
+    };
   },
 
   methods: {
