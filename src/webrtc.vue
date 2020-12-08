@@ -144,32 +144,6 @@
         that.videoList = newList;
         that.$emit('left-room', stream.streamid);
       };
-
-      // if local or remote stream is muted
-      this.rtcmConnection.onmute = function(e) {
-        e.mediaElement.src = null;
-        
-        if(e.session.audio && !e.session.video) {
-          e.mediaElement.muted = true;
-          return;
-        }
-      };
-
-      // if local or remote stream is unmuted
-      this.rtcmConnection.onunmute = function(e) {
-        console.log(e)
-        
-        document.getElementById(e.mediaElement.id).removeAttribute('poster');
-        e.mediaElement.src = URL.createObjectURL(e.stream);
-
-        if(e.session.audio && !e.session.video) {
-          e.mediaElement.muted = false;
-          return;
-        }
-
-        e.stream.getAudioTracks()[0].enabled = true;
-        console.log(e.stream.getAudioTracks());
-      };
     },
     methods: {
       join() {
