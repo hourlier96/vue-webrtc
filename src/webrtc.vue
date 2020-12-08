@@ -148,7 +148,7 @@
       // if local or remote stream is muted
       this.rtcmConnection.onmute = function(e) {
         e.mediaElement.src = null;
-        document.getElementById(e.mediaElement.id).setAttribute('poster', '../../../src/assets/img/unknown_person.png');
+        
         if(e.session.audio && !e.session.video) {
           e.mediaElement.muted = true;
           return;
@@ -191,8 +191,10 @@
         this.rtcmConnection.attachStreams.forEach(function (localStream) {
           if (that.localVideo.up) {
             localStream.mute('video');
+            that.$emit('mute-video', localStream);
           } else {
             localStream.unmute('video');
+            that.$emit('unmute-video', localStream);
           }
           that.localVideo.up = !that.localVideo.up;
         });
