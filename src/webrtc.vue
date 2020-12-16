@@ -259,6 +259,43 @@
     width: 100%;
   }
 
+  video {
+      width:100%;
+      height:100%;
+    }
+
+  /* one item */
+  .video-item:first-child:nth-last-child(1) {
+      width: 100%;
+      height: 100%;
+  }
+
+  /* two items */
+  .video-item:first-child:nth-last-child(2),
+  .video-item:first-child:nth-last-child(2) ~ .video-item {
+      width: 100%;
+      height: 50%;
+  }
+
+  /* three and four items */
+  .video-item:first-child:nth-last-child(3),
+  .video-item:first-child:nth-last-child(3) ~ .video-item,
+  .video-item:first-child:nth-last-child(4),
+  .video-item:first-child:nth-last-child(4) ~ .video-item {
+      width: 50%;
+      height: 50%;
+  }
+
+
+  /* five and six items */
+  .video-item:first-child:nth-last-child(5),
+  .video-item:first-child:nth-last-child(5) ~ .video-item,
+  .video-item:first-child:nth-last-child(6),
+  .video-item:first-child:nth-last-child(6) ~ .video-item  {
+      width: 50%;
+      height: 33.3%;
+  }
+
   .video-item {
     background: #c5c4c4;
     display: inline-block;
