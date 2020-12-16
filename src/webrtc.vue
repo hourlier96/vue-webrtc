@@ -253,7 +253,7 @@
 </script>
 <style scoped>
   .video-list {
-    background: whitesmoke;
+    background: black;
     height: auto;
     height: 100%;
     width: 100%;
@@ -296,8 +296,50 @@
       height: 33.3%;
   }
 
+  /* 7 to 9 */
+  .video-item:first-child:nth-last-child(n+7),
+  .video-item:first-child:nth-last-child(n+7) ~ .video-item  {
+      width: 33%;
+      height: 33.3%;
+  }
+
+  /* 10 to 12 */
+  .video-item:first-child:nth-last-child(n+10),
+  .video-item:first-child:nth-last-child(n+10) ~ .video-item  {
+      width: 25%;
+      height: 33.3%;
+  }
+
+  /* 12 to 16 */
+  .video-item:first-child:nth-last-child(n+12),
+  .video-item:first-child:nth-last-child(n+12) ~ .video-item  {
+      width: 25%;
+      height: 25%;
+  }
+
+  /* 16 to 25 */
+  .video-item:first-child:nth-last-child(n+17),
+  .video-item:first-child:nth-last-child(n+17) ~ .video-item  {
+      width: 20%;
+      height: 20%;
+  }
+
+  /* 26 to 30 */
+  .video-item:first-child:nth-last-child(n+26),
+  .video-item:first-child:nth-last-child(n+26) ~ .video-item  {
+      width: 16.6%;
+      height: 20%;
+  }
+
+  /* 31 to 36 */
+  .video-item:first-child:nth-last-child(n+31),
+  .video-item:first-child:nth-last-child(n+31) ~ .video-item  {
+      width: 16.6%;
+      height: 16.6%;
+  }
+
   .video-item {
-    background: #c5c4c4;
+    background: black;
     display: inline-block;
   }
 </style>
