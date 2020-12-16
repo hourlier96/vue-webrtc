@@ -316,10 +316,8 @@ exports.default = {
       this.rtcmConnection.attachStreams.forEach(function (localStream) {
         if (that.localVideo.up) {
           localStream.mute('video');
-          that.$emit('mute-video', localStream);
         } else {
           localStream.unmute('video');
-          that.$emit('unmute-video', localStream);
         }
         that.localVideo.up = !that.localVideo.up;
       });
@@ -432,7 +430,7 @@ exports = module.exports = __webpack_require__(6)();
 
 
 // module
-exports.push([module.i, ".video-list[data-v-31657b7a]{background:#f5f5f5;height:auto}.video-list div[data-v-31657b7a]{padding:0}.video-item[data-v-31657b7a]{background:#c5c4c4;display:inline-block}", ""]);
+exports.push([module.i, ".video-list[data-v-31657b7a]{background:#f5f5f5;height:auto;height:100%;width:100%}.video-item[data-v-31657b7a]{background:#c5c4c4;display:inline-block}", ""]);
 
 // exports
 
@@ -6674,7 +6672,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "video": item
       }
-    }, [_c('div', [_vm._v(" Video ID: " + _vm._s(item.id) + " ")]), _vm._v(" "), _c('video', {
+    }, [_c('video', {
       ref: "videos",
       refInFor: true,
       attrs: {

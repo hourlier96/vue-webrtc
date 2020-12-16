@@ -4,7 +4,6 @@
           v-bind:video="item"
           v-bind:key="item.id"
           class="video-item">
-        <div> Video ID: {{ item.id }} </div>
         <video controls autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
@@ -174,10 +173,8 @@
         this.rtcmConnection.attachStreams.forEach(function (localStream) {
           if (that.localVideo.up) {
             localStream.mute('video');
-            that.$emit('mute-video', localStream);
           } else {
             localStream.unmute('video');
-            that.$emit('unmute-video', localStream);
           }
           that.localVideo.up = !that.localVideo.up;
         });
@@ -258,11 +255,9 @@
   .video-list {
     background: whitesmoke;
     height: auto;
+    height: 100%;
+    width: 100%;
   }
-
-    .video-list div {
-      padding: 0px;
-    }
 
   .video-item {
     background: #c5c4c4;
