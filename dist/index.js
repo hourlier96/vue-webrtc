@@ -215,7 +215,7 @@ exports.default = {
   watch: {},
   mounted: function mounted() {
     var that = this;
-
+    console.log(that.localVideo.muted);
     this.rtcmConnection = new _rtcmulticonnection2.default();
     this.rtcmConnection.socketURL = this.socketURL;
     this.rtcmConnection.autoCreateMediaElement = false;
@@ -320,6 +320,8 @@ exports.default = {
           localStream.mute('video');
         } else {
           localStream.unmute('video');
+          that.localVideo.muted = false;
+          console.log(that.localVideo.muted);
         }
         that.localVideo.up = !that.localVideo.up;
       });

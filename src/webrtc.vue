@@ -71,7 +71,7 @@
     },
     mounted() {
       var that = this;
-
+      console.log(that.localVideo.muted)
       this.rtcmConnection = new RTCMultiConnection();
       this.rtcmConnection.socketURL = this.socketURL;
       this.rtcmConnection.autoCreateMediaElement = false;
@@ -177,6 +177,8 @@
             localStream.mute('video');
           } else {
             localStream.unmute('video');
+            that.localVideo.muted = false;
+            console.log(that.localVideo.muted)
           }
           that.localVideo.up = !that.localVideo.up;
         });
