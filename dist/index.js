@@ -288,13 +288,13 @@ exports.default = {
     };
 
     this.rtcmConnection.onmute = function (e) {
-      document.getElementById(e.streamid).setAttribute('poster', '../assets/unknown_person.png');
       that.$emit('mute-video', e);
+      console.log(this.localVideo.muted);
     };
 
     this.rtcmConnection.onunmute = function (e) {
-      document.getElementById(e.streamid).removeAttribute('poster');
       that.$emit('unmute-video', e);
+      console.log(this.localVideo.muted);
     };
   },
 
