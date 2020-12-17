@@ -145,7 +145,7 @@
       };
 
       this.rtcmConnection.onmute = function(e) {
-        document.getElementById(e.streamid).setAttribute('poster', '../assets/unknown.jpg');
+        document.getElementById(e.streamid).setAttribute('poster', '../assets/unknown_person.png');
         that.$emit('mute-video', e);
       };
 
