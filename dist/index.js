@@ -289,12 +289,12 @@ exports.default = {
 
     this.rtcmConnection.onmute = function (e) {
       that.$emit('mute-video', e);
-      console.log(this.localVideo.muted);
+      console.log(that.localVideo.muted);
     };
 
     this.rtcmConnection.onunmute = function (e) {
       that.$emit('unmute-video', e);
-      console.log(this.localVideo.muted);
+      console.log(that.localVideo.muted);
     };
   },
 
