@@ -71,7 +71,6 @@
     },
     mounted() {
       var that = this;
-      console.log(that.localVideo.muted)
       this.rtcmConnection = new RTCMultiConnection();
       this.rtcmConnection.socketURL = this.socketURL;
       this.rtcmConnection.autoCreateMediaElement = false;
@@ -185,6 +184,7 @@
       },
       changeMicroState() {
         this.localVideo.muted = !this.localVideo.muted;
+        console.log(that.localVideo.muted);
       },
       capture() {
         return this.getCanvas().toDataURL(this.screenshotFormat);

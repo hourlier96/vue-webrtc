@@ -215,7 +215,6 @@ exports.default = {
   watch: {},
   mounted: function mounted() {
     var that = this;
-    console.log(that.localVideo.muted);
     this.rtcmConnection = new _rtcmulticonnection2.default();
     this.rtcmConnection.socketURL = this.socketURL;
     this.rtcmConnection.autoCreateMediaElement = false;
@@ -328,6 +327,7 @@ exports.default = {
     },
     changeMicroState: function changeMicroState() {
       this.localVideo.muted = !this.localVideo.muted;
+      console.log(that.localVideo.muted);
     },
     capture: function capture() {
       return this.getCanvas().toDataURL(this.screenshotFormat);
