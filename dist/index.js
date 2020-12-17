@@ -319,6 +319,7 @@ exports.default = {
           localStream.mute('video');
         } else {
           localStream.unmute('video');
+          console.log(that.localVideo.muted);
           that.localVideo.muted = false;
           console.log(that.localVideo.muted);
         }
@@ -327,7 +328,7 @@ exports.default = {
     },
     changeMicroState: function changeMicroState() {
       this.localVideo.muted = !this.localVideo.muted;
-      console.log(that.localVideo.muted);
+      console.log(this.localVideo.muted);
     },
     capture: function capture() {
       return this.getCanvas().toDataURL(this.screenshotFormat);
