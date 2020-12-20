@@ -176,9 +176,7 @@
             localStream.mute('video');
           } else {
             localStream.unmute('video');
-            console.log(that.localVideo.muted)
-            that.localVideo.muted = false;
-            console.log(that.localVideo.muted)
+            that.changeMicroState();
           }
           that.localVideo.up = !that.localVideo.up;
         });
