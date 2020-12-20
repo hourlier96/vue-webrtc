@@ -314,13 +314,10 @@ exports.default = {
       var that = this;
       this.rtcmConnection.attachStreams.forEach(function (localStream) {
         if (that.localVideo.up) {
-          console.log(localStream.getAudioTracks()[0]);
           localStream.mute('video');
         } else {
-          console.log(localStream.getAudioTracks()[0]);
           localStream.unmute('video');
         }
-        console.log(localStream.getAudioTracks()[0]);
       });
     },
     changeMicroState: function changeMicroState() {
