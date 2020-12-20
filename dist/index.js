@@ -319,6 +319,8 @@ exports.default = {
         } else {
           console.log(localStream.getAudioTracks()[0]);
           localStream.unmute('video');
+
+          localStream.getAudioTracks()[0].enabled = !localStream.getAudioTracks()[0].enabled;
         }
         that.localVideo.up = !that.localVideo.up;
         console.log(localStream.getAudioTracks()[0]);
