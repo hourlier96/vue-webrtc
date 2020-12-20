@@ -184,8 +184,11 @@
         });
       },
       changeMicroState() {
-        this.localVideo.muted = !this.localVideo.muted;
-        console.log(this.localVideo.muted);
+        this.rtcmConnection.attachStreams.forEach(function (localStream) {
+          console.log(localStream)
+          localStream.getAudioTracks()[0].enabled = !localStream.getAudioTracks()[0].enabled;
+          console.log(localStream.getAudioTracks()[0]);
+        });
       },
       capture() {
         return this.getCanvas().toDataURL(this.screenshotFormat);
