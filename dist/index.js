@@ -288,12 +288,10 @@ exports.default = {
 
     this.rtcmConnection.onmute = function (e) {
       that.$emit('mute-video', e);
-      console.log(that.localVideo.muted);
     };
 
     this.rtcmConnection.onunmute = function (e) {
       that.$emit('unmute-video', e);
-      console.log(that.localVideo.muted);
     };
   },
 
@@ -316,12 +314,13 @@ exports.default = {
       var that = this;
       this.rtcmConnection.attachStreams.forEach(function (localStream) {
         if (that.localVideo.up) {
+          console.log(localStream.getAudioTracks()[0]);
           localStream.mute('video');
         } else {
+          console.log(localStream.getAudioTracks()[0]);
           localStream.unmute('video');
-          that.changeMicroState();
         }
-        that.localVideo.up = !that.localVideo.up;
+        console.log(localStream.getAudioTracks()[0]);
       });
     },
     changeMicroState: function changeMicroState() {
@@ -6682,7 +6681,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       ref: "videos",
       refInFor: true,
       attrs: {
-        "controls": "",
         "autoplay": "",
         "playsinline": "",
         "height": _vm.cameraHeight,

@@ -4,7 +4,7 @@
           v-bind:video="item"
           v-bind:key="item.id"
           class="video-item">
-        <video controls autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
+        <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
 </template>
@@ -145,12 +145,10 @@
 
       this.rtcmConnection.onmute = function(e) {
         that.$emit('mute-video', e);
-        console.log(that.localVideo.muted)
       };
 
       this.rtcmConnection.onunmute = function(e) {
         that.$emit('unmute-video', e);
-        console.log(that.localVideo.muted)
       };
 
     },
@@ -173,12 +171,13 @@
         var that = this;
         this.rtcmConnection.attachStreams.forEach(function (localStream) {
           if (that.localVideo.up) {
+            console.log(localStream.getAudioTracks()[0]);
             localStream.mute('video');
           } else {
+            console.log(localStream.getAudioTracks()[0]);
             localStream.unmute('video');
-            that.changeMicroState();
           }
-          that.localVideo.up = !that.localVideo.up;
+          console.log(localStream.getAudioTracks()[0]);
         });
       },
       changeMicroState() {
