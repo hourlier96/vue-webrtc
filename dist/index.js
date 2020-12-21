@@ -296,8 +296,8 @@ exports.default = {
   },
 
   methods: {
-    sendVideoID: function sendVideoID(videoID) {
-      this.$emit('pin-video', videoID);
+    pinVideo: function pinVideo(videoID) {
+      this.$emit('pin-video', 'item-' + videoID);
     },
     triggerFullScreen: function triggerFullScreen(streamId) {
       var videoObj = document.getElementById(streamId);
@@ -6689,9 +6689,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.videoList), function(item) {
     return _c('div', {
       key: item.id,
-      staticClass: "video-item",
+      staticClass: "video-item item-",
       attrs: {
-        "video": item
+        "video": item,
+        "+": "",
+        "{{": "",
+        "item.id": "",
+        "}}": ""
       },
       on: {
         "click": function($event) {
@@ -6709,7 +6713,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_c('i', {
-      staticClass: "icon-fullscreen"
+      staticClass: "fas fa-expand"
     })]), _vm._v(" "), _c('video', {
       ref: "videos",
       refInFor: true,

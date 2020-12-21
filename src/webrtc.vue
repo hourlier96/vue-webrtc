@@ -3,9 +3,9 @@
       <div v-for="item in videoList"
           v-bind:video="item"
           v-bind:key="item.id"
-          class="video-item"
+          class="video-item item-" + {{ item.id }}
           @click="pinVideo(item.id)">
-        <button type="button" class="btn btn-info pin-btn" @click="triggerFullScreen(item.id)"> <i class="icon-fullscreen"></i> </button>
+        <button type="button" class="btn btn-info pin-btn" @click="triggerFullScreen(item.id)"> <i class="fas fa-expand"></i> </button>
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
@@ -155,8 +155,8 @@
 
     },
     methods: {
-      sendVideoID(videoID) {
-        this.$emit('pin-video', videoID);
+      pinVideo(videoID) {
+        this.$emit('pin-video', 'item-' + videoID);
       },
       triggerFullScreen(streamId) {
         let videoObj = document.getElementById(streamId)
