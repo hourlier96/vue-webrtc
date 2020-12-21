@@ -5,7 +5,7 @@
           v-bind:key="item.id"
           class="video-item"
           @click="triggerFullScreen(item.id)">
-        <div class="pin-div" style="display:none;"> <button type="button" @click="sendVideoID(item.id)"> <i class="fas fa-thumbtack"></i> </button> </div>
+        <button type="button" class="btn btn-info" @click="sendVideoID(item.id)"> <i class="fas fa-thumbtack"></i> </button>
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
@@ -372,7 +372,4 @@
     cursor: pointer;
   }
 
-  .video-item:hover > .pin-div {
-    display: inline;
-  }
 </style>
