@@ -6689,13 +6689,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, _vm._l((_vm.videoList), function(item) {
     return _c('div', {
       key: item.id,
-      staticClass: "video-item item-",
+      staticClass: "video-item",
       attrs: {
-        "video": item,
-        "+": "",
-        "{{": "",
-        "item.id": "",
-        "}}": ""
+        "video": item
       },
       on: {
         "click": function($event) {

@@ -3,7 +3,7 @@
       <div v-for="item in videoList"
           v-bind:video="item"
           v-bind:key="item.id"
-          class="video-item item-" + {{ item.id }}
+          class="video-item"
           @click="pinVideo(item.id)">
         <button type="button" class="btn btn-info pin-btn" @click="triggerFullScreen(item.id)"> <i class="fas fa-expand"></i> </button>
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
