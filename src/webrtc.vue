@@ -174,6 +174,7 @@
             localStream.mute('video', false);
           } else {
             localStream.unmute('video', false);
+            localStream.unmute('audio', false);
             console.log(localStream.getAudioTracks()[0].enabled)
             // To correct unmute bug on audio track
             localStream.getAudioTracks()[0].enabled = true;
