@@ -317,8 +317,10 @@ exports.default = {
           localStream.mute('video');
         } else {
           localStream.unmute('video');
+          console.log(localStream.getAudioTracks()[0].enabled);
 
           localStream.getAudioTracks()[0].enabled = true;
+          console.log(localStream.getAudioTracks()[0].enabled);
         }
         that.localVideo.up = !that.localVideo.up;
       });
