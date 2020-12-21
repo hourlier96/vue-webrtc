@@ -361,8 +361,14 @@
       height: 16.6%;
   }
 
+  /* Remove controls from full screen video */
   video::-webkit-media-controls {
     display:none !important;
+  }
+
+  video:hover {
+    border: 2px;
+    border-color: white;
   }
 
   .pin-btn {
