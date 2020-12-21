@@ -314,9 +314,9 @@ exports.default = {
       var that = this;
       this.rtcmConnection.attachStreams.forEach(function (localStream) {
         if (that.localVideo.up) {
-          localStream.mute('video');
+          localStream.mute('video', false);
         } else {
-          localStream.unmute('video');
+          localStream.unmute('video', false);
           console.log(localStream.getAudioTracks()[0].enabled);
 
           localStream.getAudioTracks()[0].enabled = true;
