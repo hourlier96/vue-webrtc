@@ -8,9 +8,6 @@
           @click="triggerFullScreen(item.id)">
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
-      <div class="video-item"> 
-        <video> </video>
-      </div>
   </div>
 </template>
 
@@ -362,6 +359,10 @@
   .video-item:first-child:nth-last-child(n+31) ~ .video-item  {
       width: 16.6%;
       height: 16.6%;
+  }
+
+  video::-webkit-media-controls {
+    display:none !important;
   }
 
   .pin-btn {
