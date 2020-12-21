@@ -5,8 +5,7 @@
           v-bind:key="item.id"
           v-bind:id="'item-' + item.id"
           class="video-item"
-          @click="pinVideo(item.id)">
-        <button type="button" class="btn btn-info pin-btn" @click="triggerFullScreen(item.id)"> <i class="fas fa-expand"></i> </button>
+          @click="triggerFullScreen(item.id)">
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
       <div class="video-item"> 
@@ -28,7 +27,7 @@
         rtcmConnection: null,
         localVideo: null,
         videoList: [],
-        canvas: null,
+        canvas: null
       };
     },
     props: {
@@ -159,9 +158,6 @@
 
     },
     methods: {
-      pinVideo(videoID) {
-        this.$emit('pin-video', 'item-' + videoID);
-      },
       triggerFullScreen(streamId) {
         let videoObj = document.getElementById(streamId)
         if (videoObj.requestFullscreen) {

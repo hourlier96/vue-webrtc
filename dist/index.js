@@ -296,9 +296,6 @@ exports.default = {
   },
 
   methods: {
-    pinVideo: function pinVideo(videoID) {
-      this.$emit('pin-video', 'item-' + videoID);
-    },
     triggerFullScreen: function triggerFullScreen(streamId) {
       var videoObj = document.getElementById(streamId);
       if (videoObj.requestFullscreen) {
@@ -6696,22 +6693,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
-          return _vm.pinVideo(item.id)
-        }
-      }
-    }, [_c('button', {
-      staticClass: "btn btn-info pin-btn",
-      attrs: {
-        "type": "button"
-      },
-      on: {
-        "click": function($event) {
           return _vm.triggerFullScreen(item.id)
         }
       }
-    }, [_c('i', {
-      staticClass: "fas fa-expand"
-    })]), _vm._v(" "), _c('video', {
+    }, [_c('video', {
       ref: "videos",
       refInFor: true,
       attrs: {
