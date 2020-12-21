@@ -296,6 +296,19 @@ exports.default = {
   },
 
   methods: {
+    triggerFullScreen: function triggerFullScreen(divObj) {
+      if (divObj.requestFullscreen) {
+        divObj.requestFullscreen();
+      } else if (divObj.msRequestFullscreen) {
+        divObj.msRequestFullscreen();
+      } else if (divObj.mozRequestFullScreen) {
+        divObj.mozRequestFullScreen();
+      } else if (divObj.webkitRequestFullscreen) {
+        divObj.webkitRequestFullscreen();
+      } else {
+        console.log("Fullscreen API is not supported");
+      }
+    },
     join: function join() {
       var that = this;
       this.rtcmConnection.openOrJoin(this.roomId, function (isRoomExist, roomid) {
@@ -317,11 +330,8 @@ exports.default = {
           localStream.mute('video', false);
         } else {
           localStream.unmute('video', false);
-          localStream.unmute('audio', false);
-          console.log(localStream.getAudioTracks()[0].enabled);
 
-          localStream.getAudioTracks()[0].enabled = true;
-          console.log(localStream.getAudioTracks()[0].enabled);
+          localStream.unmute('audio', false);
         }
         that.localVideo.up = !that.localVideo.up;
       });
@@ -6680,6 +6690,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "video-item",
       attrs: {
         "video": item
+      },
+      on: {
+        "click": function($event) {
+          _vm.triggerFullScreen(_vm.document.getElementById(item.id))
+        }
       }
     }, [_c('video', {
       ref: "videos",

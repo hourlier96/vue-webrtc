@@ -3,7 +3,8 @@
       <div v-for="item in videoList"
           v-bind:video="item"
           v-bind:key="item.id"
-          class="video-item">
+          class="video-item"
+          @click="triggerFullScreen(document.getElementById(item.id))">
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
@@ -153,6 +154,22 @@
 
     },
     methods: {
+      triggerFullScreen(divObj) {
+        if (divObj.requestFullscreen) {
+          divObj.requestFullscreen();
+        }
+        else if (divObj.msRequestFullscreen) {
+          divObj.msRequestFullscreen();
+        }
+        else if (divObj.mozRequestFullScreen) {
+          divObj.mozRequestFullScreen();
+        }
+        else if (divObj.webkitRequestFullscreen) {
+          divObj.webkitRequestFullscreen();
+        } else {
+          console.log("Fullscreen API is not supported");
+        } 
+      },
       join() {
          var that = this;
          this.rtcmConnection.openOrJoin(this.roomId, function (isRoomExist, roomid) {
@@ -174,11 +191,8 @@
             localStream.mute('video', false);
           } else {
             localStream.unmute('video', false);
-            localStream.unmute('audio', false);
-            console.log(localStream.getAudioTracks()[0].enabled)
             // To correct unmute bug on audio track
-            localStream.getAudioTracks()[0].enabled = true;
-            console.log(localStream.getAudioTracks()[0].enabled)
+            localStream.unmute('audio', false);
           }
           that.localVideo.up = !that.localVideo.up;
         });
