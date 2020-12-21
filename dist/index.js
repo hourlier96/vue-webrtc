@@ -6686,12 +6686,13 @@ module.exports = function normalizeComponent (
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "video-list"
-  }, _vm._l((_vm.videoList), function(item) {
+  }, [_vm._l((_vm.videoList), function(item) {
     return _c('div', {
       key: item.id,
       staticClass: "video-item",
       attrs: {
-        "video": item
+        "video": item,
+        "id": 'item-' + item.id
       },
       on: {
         "click": function($event) {
@@ -6723,8 +6724,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "muted": item.muted
       }
     })])
-  }), 0)
-},staticRenderFns: []}
+  }), _vm._v(" "), _vm._m(0)], 2)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "video-item"
+  }, [_c('video')])
+}]}
 
 /***/ }),
 /* 11 */
