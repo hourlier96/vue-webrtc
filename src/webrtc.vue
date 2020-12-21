@@ -380,8 +380,8 @@
   }
 
   .video-item:hover {
-    border: 2px;
-    border-color: white;
+    border: 4px solid;
+    border-color: red;
   }
 
 </style>
