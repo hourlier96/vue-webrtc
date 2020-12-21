@@ -183,6 +183,7 @@
         });
       },
       changeMicroState() {
+        console.log(this.rtcmConnection);
         this.rtcmConnection.attachStreams.forEach(function (localStream) {
           console.log(localStream)
           localStream.getAudioTracks()[0].enabled = !localStream.getAudioTracks()[0].enabled;
