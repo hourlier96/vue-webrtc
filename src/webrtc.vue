@@ -4,8 +4,8 @@
           v-bind:video="item"
           v-bind:key="item.id"
           class="video-item"
-          @click="triggerFullScreen(item.id)">
-        <button type="button" class="btn btn-info pin-btn" @click="sendVideoID(item.id)"> <i class="fas fa-thumbtack"></i> </button>
+          @click="pinVideo(item.id)">
+        <button type="button" class="btn btn-info pin-btn" @click="triggerFullScreen(item.id)"> <i class="icon-fullscreen"></i> </button>
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>

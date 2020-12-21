@@ -6695,7 +6695,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
-          return _vm.triggerFullScreen(item.id)
+          return _vm.pinVideo(item.id)
         }
       }
     }, [_c('button', {
@@ -6705,11 +6705,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
-          return _vm.sendVideoID(item.id)
+          return _vm.triggerFullScreen(item.id)
         }
       }
     }, [_c('i', {
-      staticClass: "fas fa-thumbtack"
+      staticClass: "icon-fullscreen"
     })]), _vm._v(" "), _c('video', {
       ref: "videos",
       refInFor: true,
