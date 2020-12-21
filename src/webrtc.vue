@@ -5,6 +5,7 @@
           v-bind:key="item.id"
           class="video-item"
           @click="triggerFullScreen(item.id)">
+        <div class="pin-div" style="display:none;"> <button type="button" @click="sendVideoID(item.id)"> <i class="fas fa-thumbtack"></i> </button> </div>
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
@@ -154,6 +155,9 @@
 
     },
     methods: {
+      sendVideoID(videoID) {
+        this.$emit('pin-video', videoID);
+      },
       triggerFullScreen(streamId) {
         let videoObj = document.getElementById(streamId)
         if (videoObj.requestFullscreen) {
@@ -365,5 +369,10 @@
   .video-item {
     background: black;
     display: inline-block;
+    cursor: pointer;
+  }
+
+  .video-item:hover > .pin-div {
+    display: inline;
   }
 </style>
