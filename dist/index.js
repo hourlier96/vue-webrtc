@@ -296,15 +296,16 @@ exports.default = {
   },
 
   methods: {
-    triggerFullScreen: function triggerFullScreen(divObj) {
-      if (divObj.requestFullscreen) {
-        divObj.requestFullscreen();
-      } else if (divObj.msRequestFullscreen) {
-        divObj.msRequestFullscreen();
-      } else if (divObj.mozRequestFullScreen) {
-        divObj.mozRequestFullScreen();
-      } else if (divObj.webkitRequestFullscreen) {
-        divObj.webkitRequestFullscreen();
+    triggerFullScreen: function triggerFullScreen(streamId) {
+      var videoObj = document.getElementById(streamId);
+      if (videoObj.requestFullscreen) {
+        videoObj.requestFullscreen();
+      } else if (videoObj.msRequestFullscreen) {
+        videoObj.msRequestFullscreen();
+      } else if (videoObj.mozRequestFullScreen) {
+        videoObj.mozRequestFullScreen();
+      } else if (videoObj.webkitRequestFullscreen) {
+        videoObj.webkitRequestFullscreen();
       } else {
         console.log("Fullscreen API is not supported");
       }
@@ -6693,7 +6694,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "click": function($event) {
-          _vm.triggerFullScreen(_vm.document.getElementById(item.id))
+          return _vm.triggerFullScreen(item.id)
         }
       }
     }, [_c('video', {

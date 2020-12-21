@@ -4,7 +4,7 @@
           v-bind:video="item"
           v-bind:key="item.id"
           class="video-item"
-          @click="triggerFullScreen(document.getElementById(item.id))">
+          @click="triggerFullScreen(item.id)">
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
@@ -154,18 +154,19 @@
 
     },
     methods: {
-      triggerFullScreen(divObj) {
-        if (divObj.requestFullscreen) {
-          divObj.requestFullscreen();
+      triggerFullScreen(streamId) {
+        let videoObj = document.getElementById(streamId)
+        if (videoObj.requestFullscreen) {
+          videoObj.requestFullscreen();
         }
-        else if (divObj.msRequestFullscreen) {
-          divObj.msRequestFullscreen();
+        else if (videoObj.msRequestFullscreen) {
+          videoObj.msRequestFullscreen();
         }
-        else if (divObj.mozRequestFullScreen) {
-          divObj.mozRequestFullScreen();
+        else if (videoObj.mozRequestFullScreen) {
+          videoObj.mozRequestFullScreen();
         }
-        else if (divObj.webkitRequestFullscreen) {
-          divObj.webkitRequestFullscreen();
+        else if (videoObj.webkitRequestFullscreen) {
+          videoObj.webkitRequestFullscreen();
         } else {
           console.log("Fullscreen API is not supported");
         } 
