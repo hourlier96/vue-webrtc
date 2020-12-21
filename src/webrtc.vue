@@ -366,11 +366,6 @@
     display:none !important;
   }
 
-  video:hover {
-    border: 2px;
-    border-color: white;
-  }
-
   .pin-btn {
     position: relative;
     top: 2%;
@@ -382,6 +377,11 @@
     background: black;
     display: inline-block;
     cursor: pointer;
+  }
+
+  .video-item:hover {
+    border: 2px;
+    border-color: white;
   }
 
 </style>
