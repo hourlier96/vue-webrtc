@@ -5,7 +5,7 @@
           v-bind:key="item.id"
           class="video-item"
           @click="triggerFullScreen(item.id)">
-        <button type="button" class="btn btn-info" @click="sendVideoID(item.id)"> <i class="fas fa-thumbtack"></i> </button>
+        <button type="button" class="btn btn-info pin-btn" @click="sendVideoID(item.id)"> <i class="fas fa-thumbtack"></i> </button>
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
       </div>
   </div>
@@ -173,7 +173,8 @@
           videoObj.webkitRequestFullscreen();
         } else {
           console.log("Fullscreen API is not supported");
-        } 
+        }
+        videoObj.removeAttribute('controls');
       },
       join() {
          var that = this;
@@ -203,11 +204,8 @@
         });
       },
       changeMicroState() {
-        console.log(this.rtcmConnection);
         this.rtcmConnection.attachStreams.forEach(function (localStream) {
-          console.log(localStream)
           localStream.getAudioTracks()[0].enabled = !localStream.getAudioTracks()[0].enabled;
-          console.log(localStream.getAudioTracks()[0]);
         });
       },
       capture() {
@@ -364,6 +362,13 @@
   .video-item:first-child:nth-last-child(n+31) ~ .video-item  {
       width: 16.6%;
       height: 16.6%;
+  }
+
+  .pin-btn {
+    position: relative;
+    top: 2%;
+    left: -45%;
+    z-index: 10;
   }
 
   .video-item {
