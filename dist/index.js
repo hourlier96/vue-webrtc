@@ -321,14 +321,16 @@ exports.default = {
         if (isRoomExist === false && that.rtcmConnection.isInitiator === true) {
           that.$emit('opened-room', roomid);
         }
-      });
 
-      if (!this.enableAudio) {
-        this.changeMicroState();
-      }
-      if (!this.enableVideo) {
-        this.changeVideoState();
-      }
+        if (!this.enableAudio) {
+          console.log(this.enableAudio);
+          this.changeMicroState();
+        }
+        if (!this.enableVideo) {
+          console.log(this.enableVideo);
+          this.changeVideoState();
+        }
+      });
     },
     leave: function leave() {
       this.rtcmConnection.attachStreams.forEach(function (localStream) {
