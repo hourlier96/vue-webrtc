@@ -216,16 +216,7 @@ exports.default = {
       default: null
     }
   },
-  watch: {
-    enableAudio: function enableAudio() {
-      this.rtcmConnection.session.audio = this.enableAudio;
-      this.rtcmConnection.sdpConstraints.mandatory.OfferToReceiveAudio = this.enableAudio;
-    },
-    enableVideo: function enableVideo() {
-      this.rtcmConnection.session.video = this.enableVideo;
-      this.rtcmConnection.sdpConstraints.mandatory.OfferToReceiveVideo = this.enableVideo;
-    }
-  },
+  watch: {},
   mounted: function mounted() {
     var that = this;
     this.rtcmConnection = new _rtcmulticonnection2.default();
@@ -331,6 +322,13 @@ exports.default = {
           that.$emit('opened-room', roomid);
         }
       });
+
+      if (!this.enableAudio) {
+        this.changeMicroState();
+      }
+      if (!this.enableVideo) {
+        this.changeVideoState();
+      }
     },
     leave: function leave() {
       this.rtcmConnection.attachStreams.forEach(function (localStream) {
