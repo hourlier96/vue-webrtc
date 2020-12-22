@@ -387,6 +387,7 @@
       top: 15px;
       left: 10px;
       width: 100%;
+      z-index: -1 /* Hide name on vide */
   }
 
   .video-item .overlay h3
@@ -403,7 +404,7 @@
   }
 
   /* Show name on hover */
-  .video-item:hover > .video-item .overlay{
+  .video-item:hover > .overlay{
     z-index: 2;
   }
 
