@@ -387,17 +387,16 @@
       top: 15px;
       left: 10px;
       width: 100%;
-      z-index: -1 /* Hide name on vide */
+      z-index: -1 /* Hide name on video */
   }
 
   .video-item .overlay h3
   {
-      font-size: 1em;
+      font-size: 160%;
       color: #fff;
       font-weight: bold;
   }
 
-  /* Show  */
   .video-item:hover {
     border: 3px solid;
     border-color: red;
@@ -407,8 +406,5 @@
   .video-item:hover > .overlay{
     z-index: 2;
   }
-
-
-  
 
 </style>
