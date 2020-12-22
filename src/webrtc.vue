@@ -381,18 +381,12 @@
     position: relative;
   }
 
-  .video-item:hover {
-    border: 3px solid;
-    border-color: red;
-  }
-
   .video-item .overlay
   {
       position: absolute;
       top: 15px;
       left: 10px;
       width: 100%;
-      z-index: 2;
   }
 
   .video-item .overlay h3
@@ -401,5 +395,19 @@
       color: #fff;
       font-weight: bold;
   }
+
+  /* Show  */
+  .video-item:hover {
+    border: 3px solid;
+    border-color: red;
+  }
+
+  /* Show name on hover */
+  .video-item:hover > .video-item .overlay{
+    z-index: 2;
+  }
+
+
+  
 
 </style>
