@@ -78,6 +78,14 @@
       }
     },
     watch: {
+      enableAudio() {
+        this.rtcmConnection.session.audio = this.enableAudio;
+        this.rtcmConnection.sdpConstraints.mandatory.OfferToReceiveAudio = this.enableAudio;
+      },
+      enableVideo() {
+        this.rtcmConnection.session.video = this.enableVideo;
+        this.rtcmConnection.sdpConstraints.mandatory.OfferToReceiveVideo = this.enableVideo;
+      }
     },
     mounted() {
       var that = this;

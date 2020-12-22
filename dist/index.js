@@ -216,7 +216,16 @@ exports.default = {
       default: null
     }
   },
-  watch: {},
+  watch: {
+    enableAudio: function enableAudio() {
+      this.rtcmConnection.session.audio = this.enableAudio;
+      this.rtcmConnection.sdpConstraints.mandatory.OfferToReceiveAudio = this.enableAudio;
+    },
+    enableVideo: function enableVideo() {
+      this.rtcmConnection.session.video = this.enableVideo;
+      this.rtcmConnection.sdpConstraints.mandatory.OfferToReceiveVideo = this.enableVideo;
+    }
+  },
   mounted: function mounted() {
     var that = this;
     this.rtcmConnection = new _rtcmulticonnection2.default();
