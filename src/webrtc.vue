@@ -7,8 +7,10 @@
           class="video-item"
           @click="triggerFullScreen(item.id)">
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id">
-          <span> {{ item.id }} </span>
         </video>
+        <div class="overlay">
+          <h3>{{ item.id }}</h3>
+        </div>
       </div>
   </div>
 </template>
@@ -368,13 +370,6 @@
     display:none !important;
   }
 
-  .pin-btn {
-    position: relative;
-    top: 2%;
-    left: -45%;
-    z-index: 10;
-  }
-
   .video-item {
     background: black;
     display: inline-block;
@@ -384,6 +379,21 @@
   .video-item:hover {
     border: 3px solid;
     border-color: red;
+  }
+
+  .video-item .overlay
+  {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      width: 100%;
+      z-index: 2;
+  }
+  .video-item .overlay h3
+  {
+      font-size: 1em;
+      color: #fff;
+      font-weight: bold;
   }
 
 </style>
