@@ -9,7 +9,7 @@
         <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id">
         </video>
         <div class="overlay">
-          <h3>{{ item.id }}</h3>
+          <h3>{{ displayedName }}</h3>
         </div>
       </div>
   </div>
@@ -32,6 +32,10 @@
       };
     },
     props: {
+      displayedName: {
+        type: String,
+        default: ''
+      },
       roomId: {
         type: String,
         default: 'public-room'
@@ -374,6 +378,7 @@
     background: black;
     display: inline-block;
     cursor: pointer;
+    position: relative;
   }
 
   .video-item:hover {
@@ -384,11 +389,12 @@
   .video-item .overlay
   {
       position: absolute;
-      top: 0;
+      top: 15px;
       left: 10px;
       width: 100%;
       z-index: 2;
   }
+
   .video-item .overlay h3
   {
       font-size: 1em;
