@@ -188,13 +188,13 @@
             that.$emit('opened-room', roomid);
           }
           /* Disable media when not active before join */
-          if (!this.enableAudio) {
-            console.log(this.enableAudio)
-            this.changeMicroState();
+          if (!that.enableAudio) {
+            console.log(that.enableAudio)
+            that.changeMicroState();
           }
-          if (!this.enableVideo) {
-            console.log(this.enableVideo)
-            this.changeVideoState();
+          if (!that.enableVideo) {
+            console.log(that.enableVideo)
+            that.changeVideoState();
           }
         });
         
