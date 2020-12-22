@@ -6,7 +6,9 @@
           v-bind:id="'item-' + item.id"
           class="video-item"
           @click="triggerFullScreen(item.id)">
-        <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id"></video>
+        <video autoplay playsinline ref="videos" :height="cameraHeight" :muted="item.muted" :id="item.id">
+          <span> {{ item.id }} </span>
+        </video>
       </div>
   </div>
 </template>
@@ -380,7 +382,7 @@
   }
 
   .video-item:hover {
-    border: 4px solid;
+    border: 3px solid;
     border-color: red;
   }
 
