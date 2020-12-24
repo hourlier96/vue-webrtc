@@ -323,11 +323,9 @@ exports.default = {
         }
 
         if (!that.enableAudio) {
-          console.log(that.enableAudio);
           that.changeMicroState();
         }
         if (!that.enableVideo) {
-          console.log(that.enableVideo);
           that.changeVideoState();
         }
       });

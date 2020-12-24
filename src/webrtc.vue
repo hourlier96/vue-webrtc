@@ -187,17 +187,14 @@
           if (isRoomExist === false && that.rtcmConnection.isInitiator === true) {
             that.$emit('opened-room', roomid);
           }
-          /* Disable media when not active before join */
+          /* Set correct media state on join */
           if (!that.enableAudio) {
-            console.log(that.enableAudio)
             that.changeMicroState();
           }
           if (!that.enableVideo) {
-            console.log(that.enableVideo)
             that.changeVideoState();
           }
         });
-        
       },
       leave() {
         this.rtcmConnection.attachStreams.forEach(function (localStream) {

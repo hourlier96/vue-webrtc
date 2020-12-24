@@ -19,6 +19,7 @@
   "dependencies": {
     "adapterjs": "^0.15.4",
     "rtcmulticonnection": "^3.7.0",
+    "url-loader": "^4.1.1",
     "url-parse": "^1.4.7",
     "vue": "^2.6.11"
   },
