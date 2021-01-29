@@ -11,9 +11,9 @@
         <div class="overlay">
           <h3>{{ displayedName }}</h3>
         </div>
-        <img src="../assets/screenshot.png" style="display:none;"/>
-        <img :src="require('./../assets/logo.png')" style="display:none;"/>
-      </div>
+        <!-- <img src="../assets/screenshot.png"/>
+        <img :src="require('./../assets/screenshot.png')"/>
+       --></div>
   </div>
 </template>
 
