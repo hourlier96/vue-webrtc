@@ -166,7 +166,9 @@ exports.default = {
       rtcmConnection: null,
       localVideo: null,
       videoList: [],
-      canvas: null
+      canvas: null,
+
+      displayedName: null
     };
   },
 
@@ -257,7 +259,8 @@ exports.default = {
       if (found === undefined) {
         var video = {
           id: stream.streamid,
-          muted: stream.type === 'local'
+          muted: stream.type === 'local',
+          username: this.displayedName
         };
 
         that.videoList.push(video);
@@ -277,7 +280,7 @@ exports.default = {
         }
       }, 1000);
 
-      that.$emit('joined-room', stream.streamid);
+      that.$emit('joined-room', stream);
     };
     this.rtcmConnection.onstreamended = function (stream) {
       var newList = [];
